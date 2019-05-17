@@ -1,5 +1,5 @@
 {
-  "name": "neo-inputs",
+  "name": "neo-ui",
   "version": "1.0.0",
   "description": "This packages is a collection of React UI input components",
   "main": "src/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bettblake08/neo-inputs.git"
+    "url": "git+https://github.com/bettblake08/neo-ui.git"
   },
   "keywords": [
     "React",
@@ -19,7 +19,7 @@
   "author": "Brian K. Bett",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bettblake08/neo-inputs/issues"
+    "url": "https://github.com/bettblake08/neo-ui/issues"
   },
-  "homepage": "https://github.com/bettblake08/neo-inputs#readme"
+  "homepage": "https://github.com/bettblake08/neo-ui#readme"
 }

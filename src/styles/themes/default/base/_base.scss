@@ -1,0 +1,14 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    &,
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+}

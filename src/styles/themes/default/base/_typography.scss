@@ -1,0 +1,118 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+@mixin global_text_props {
+    text-align: left
+}
+
+.neo-font {
+    &--banner {
+        font-family: $font-primary;
+        font-size: 2.2rem;
+        @include global_text_props;
+    }
+    &--title {
+        font-family: $font-primary;
+        font-size: 3.8rem;
+        font-weight:700;
+        @include global_text_props;
+    }
+    &--subtitle {
+        font-family: $font-secondary;
+        font-size: 2.6rem;
+        @include global_text_props;
+    }
+    &--label {
+        font-family: $font-primary;
+        font-size: 1.8rem;
+        @include global_text_props;
+        &--2 {
+            font-family: $font-primary;
+            font-size: 1.6rem;
+            @include global_text_props;
+        }
+    }
+    &--header {
+        font-family: $font-primary;
+        font-size: 2rem;
+        @include global_text_props;
+        &--2 {
+            font-family: $font-secondary;
+            font-size: 1.8rem;
+            @include global_text_props;
+        }
+        &--3 {
+            font-family: $font-secondary;
+            font-size: 1.6rem;
+            @include global_text_props;
+        }
+    }
+    &--normal {
+        font-family: $font-secondary;
+        font-size: 1.4rem;
+        text-align: left;
+    }
+    &--button {
+        font-size: 1.2rem;
+        &,
+        &--2 {
+            font-family: $font-primary;
+            text-align: center;
+            font-weight: bold;
+
+        }
+        &--2 {
+            font-size: 1.4rem;
+        }
+    }
+    &--input {
+        font-family: $font-primary;
+        font-size: 1.4rem;
+        text-indent: 1rem;
+        @include global_text_props;
+        &-dropdown {
+            font-family: $font-primary;
+            font-size: 1.3rem;
+            @include global_text_props;
+        }
+    }
+    &--comment {
+        font-family: $font-secondary;
+        font-size: 1.2rem;
+        text-align: left;
+    }
+    &--tab {
+        &-h1,
+        &-h2 {
+            font-family: $font-primary;
+            text-align: center;
+        }
+        &-h1 {
+            font-size: 1.4rem;
+        }
+        &-h2 {
+            font-size: 1.3rem;
+        }
+    }
+    &--table {
+        &-h1 {
+            font-family: $font-primary;
+            font-size: 1.2rem;
+            @include global_text_props;
+        }
+    }
+    &--text {
+        &-capitalize {
+            text-transform: capitalize;
+        }
+        &-uppercase {
+            text-transform: uppercase;
+        }
+        &-center {
+            text-align: center;
+        }
+        &-right {
+            text-align: right;
+        }
+    }
+}

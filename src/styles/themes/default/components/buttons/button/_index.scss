@@ -1,0 +1,93 @@
+@import "../../../abstracts/variables";
+@import "../../../abstracts/mixins";
+
+
+.neo-button {
+    &:hover {
+        opacity: 1.0;
+        background-color: $color-primary;
+        border-color: $color-primary;
+        color: $color-primary-white;
+        box-shadow: $box-shadow-light;
+    }
+    &,
+    &--normal,
+    &--fail,
+    &--success,
+    &--loading,
+    &--warning,
+    &--danger,
+    &--inverted {
+        width: 100%;
+        height: 4rem;
+        padding: 0 1rem;
+        line-height: 4rem;
+        border-radius: 2rem;
+        float: left;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        outline: none;
+    }
+    &,
+    &--normal {
+        color: $color-primary;
+        border: solid .1rem $color-primary;
+        opacity: 0.6;
+    }
+    &--inverted {
+        color: $color-primary-white;
+        border: solid .1rem $color-primary-white;
+        opacity: 0.6;
+        &:hover {
+            opacity: 1.0;
+            background-color: $color-primary;
+            border-color: $color-primary;
+            color: $color-primary-white;
+        }
+    }
+    &--fail,
+    &--success,
+    &--loading,
+    &--warning,
+    &--danger{
+        color: $color-primary-white;
+        border: solid .1rem transparent;
+    }
+    &--fail,
+    &--success,
+    &--loading {
+        opacity: 1;
+    }
+    &--normal {
+        background-color: transparent;
+        opacity: 0.6;
+        &:hover {
+            background-color: $color-primary;
+            color: $color-primary-white;
+            opacity: 1;
+        }
+    }
+    &--loading {
+        background-color: $color-success-secondary;
+        opacity: 1;
+        &:hover {
+            color: $color-primary-white;
+        }
+    }
+    &--fail {
+        background-color: $color-error-primary;
+    }
+    &--success {
+        background-color: $color-success-primary;
+    }
+    &--warning {
+        background-color: $color-warning-primary;
+    }
+    &--danger {
+        background-color: $color-danger-primary;
+        opacity: 0.6;
+        &:hover {
+            opacity: 1;
+        }
+    }
+}

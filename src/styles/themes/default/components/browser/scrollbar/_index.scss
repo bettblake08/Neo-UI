@@ -1,0 +1,24 @@
+.neo-scroll-bar {
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-primary;
+        outline: .1rem solid $color-primary;
+    }
+
+    &,
+    &--dark {
+        &::-webkit-scrollbar {
+            width: .2rem;
+        }
+    }
+
+    &--dark {
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 .2rem rgba(0, 0, 0, 0.3);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-grey-dark;
+            outline: .1rem solid $color-grey-dark;
+        }
+    }
+}

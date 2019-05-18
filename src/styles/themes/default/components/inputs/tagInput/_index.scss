@@ -1,0 +1,119 @@
+@import "../../../abstracts/variables";
+@import "../../../abstracts/mixins";
+
+.neo-tags__tag--selected,
+.neo-tags__tag__input--active,
+.neo-tags__tag__input--disabled,
+.neo-tags__tag__input__buttons,
+.neo-tags__tag__input__name,
+.neo-tags__tag__front,
+.neo-tags__tag__back {
+    @include transition-type-2;
+}
+
+.neo-tags {
+    float: left;
+    width: 100%;
+    &__input {
+        &--active &__name {
+            width: 20rem;
+            float: left;
+        }
+        &--active &__add {
+            display: none;
+        }
+        &--active &__confirm,
+        &--active &__cancel {
+            display: block;
+        }
+        &--disabled &__name {
+            width: 0;
+            float: left;
+            input {
+                display: none;
+            }
+        }
+        &--disabled &__add {
+            display: block;
+        }
+        &--disabled &__confirm,
+        &--disabled &__cancel {
+            display: none;
+        }
+        &__name {
+            input {
+                height: 4rem;
+                width: 100%;
+                float: left;
+            }
+        }
+        &__buttons {
+            float: left;
+            margin-left: 1rem;
+        }
+        &__add,
+        &__confirm,
+        &__cancel {
+            width: 2rem;
+            height: 4rem;
+            padding: 1rem 0;
+            float: left;
+            margin-right: 1rem;
+        }
+    }
+    &__suggestions {
+        float: left;
+        width: 100%;
+        padding: 2rem 0;
+    }
+    &__tag {
+        background-color: $color-primary;
+        float: left;
+        margin-right: 2rem;
+        cursor: pointer;
+
+        &--selected {
+            padding: 0 1rem;
+            float: left;
+            line-height: 4rem;
+            margin: 1rem 1rem 0 0;
+            background-color: $color-primary;
+            color: $color-primary-white;
+            cursor: pointer;
+
+            &:hover {
+                background: $color-success-primary;
+                box-shadow: $box-shadow-light;
+                margin-top: -.5rem;
+            }
+        }
+
+        &__name {
+            padding: 0 1rem;
+            float: left;
+            line-height: 4rem;
+            margin-right: 1rem;
+            color: $color-primary-white;
+            display: block;
+        }
+
+        &__cancel {
+            width: 2rem;
+            height: 2rem;
+            padding: .5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 1rem;
+            float: left;
+            border: solid .1rem $color-primary-white;
+
+            .neo-icon-button--inverted:hover {
+                border: solid .1rem $color-error-primary;
+
+                .icon {
+                    fill: $color-error-primary;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+:root {
+    --neo-font:"Trebuchet MS",
+    Arial,
+    Helvetica,
+    sans-serif;
+    --neo-font--secondary: "Trebuchet MS",
+    Arial,
+    Helvetica,
+    sans-serif;
+    --neo-color--primary:rgb(0, 148, 104);
+    --neo-color--primary--white:#FFF;
+    --neo-color--primary--black:#000;
+    --neo-color--secondary:#13ff82;
+    --neo-color--secondary--white:#CCC;
+    --neo-color--grey--light:#CCC;
+    --neo-color--grey--fair:#999;
+    --neo-color--grey--dark:#171717;
+    --neo-color--grey--dark-fade:rgba(0, 0, 0, 0.61);
+    --neo-color--error--primary:#b33030;
+    --neo-color--error--secondary:rgba(216, 77, 71, 1);
+    --neo-color--success--primary: #00a84f;
+    --neo-color--success--secondary: #00fa75;
+    --neo-color--info: #8eb4cb;
+    --neo-color--warning--primary: #ffd900;
+    --neo-color--danger--primary: #b33030;
+    --neo-box-shadow--inset: 0 .1rem .3rem .1rem #CCC inset;
+    --neo-box-shadow--light: 0 .1rem 2rem -.5rem var(--neo-color--primary--black);
+    --neo-box-shadow--light-inset: 0 .1rem 2rem -.5rem var(--neo-color--primary--black) inset;
+    --neo-box-shadow--dark: 0 .1rem 4rem -.5rem var(--neo-color--primary--black);
+    --neo-box-shadow--color-light: 0 .1rem 2rem -.5rem var(--neo-color--secondary);
+    --neo-box-shadow--success: 0 .1rem 2rem 0 var(--neo-color--success--primary);
+    --neo-box-shadow--error: 0 .1rem 2rem 0 var(--neo-color--error--primary);
+    --neo-box-shadow--text-light: 0 0 2rem #000;
+}
+
+$font-primary: var(--neo-font);
+$font-secondary: var(--neo-font--secondary);
+$color-primary: var(--neo-color--primary);
+$color-secondary: var(--neo-color--secondary);
+$color-primary-white: var(--neo-color--primary--white);
+$color-secondary-white: var(--neo-color--secondary--white);
+$color-primary-black: var(--neo-color--primary--black);
+$color-grey-light: var(--neo-color--grey--light);
+$color-grey-fair: var(--neo-color--grey--fair);
+$color-grey-dark: var(--neo-color--grey--dark);
+$color-grey-dark-fade: var(--neo-color--grey--dark-fade);
+$color-error-primary: var(--neo-color--error--primary);
+$color-error-secondary: var(--neo-color--error--secondary);
+$color-success-primary: var(--neo-color--success--primary);
+$color-success-secondary: var(--neo-color--success--secondary);
+$color-info: var(--neo-color--info);
+$color-warning-primary: var(--neo-color--warning--primary);
+$color-danger-primary: var(--neo-color--danger--primary);
+$input-box-shadow: var(--neo-box-shadow--inset);
+$box-shadow-light-inset: var(--neo-box-shadow--light-inset);
+$box-shadow-light: var(--neo-box-shadow--light);
+$box-shadow-dark: var(--neo-box-shadow--dark);
+$box-shadow-color-light: var(--neo-box-shadow--color-light);
+$box-shadow-success: var(--neo-box-shadow--success);
+$box-shadow-error: var(--neo-box-shadow--error);
+$text-shadow-light: var(--neo-box-shadow--text-light);

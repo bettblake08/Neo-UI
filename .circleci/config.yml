@@ -1,0 +1,41 @@
+version: 2
+
+defaults: &defaults
+    working_directory: ~/repo
+
+jobs:
+  build:
+    # Run tests inside a docker container set up on CircleCI
+    docker:
+      - image: circleci/node:11.6.0
+
+    # Steps to run tests
+    steps:
+      # Checkout the code
+      - checkout
+
+      - run:
+          name: test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      # Use cached node_modules installations
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install app dependencies
+          command: yarn install
+
+      # Save node_modules to cache to speed up subsequent builds
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+      # run tests!
+      - run:
+          name: Run Test and Coverage
+          command: |
+            ./cc-test-reporter before-build
+            yarn test:CI:cover
+            ./cc-test-reporter after-build --exit-code $?

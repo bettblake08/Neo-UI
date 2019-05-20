@@ -1,11 +1,13 @@
 import React from 'react';
 import { shallow } from "enzyme";
-import Button from ",/button";
+import Button from "./button";
+import TestComponent from "../TestComponent";
 
 describe("Basic Button ", () => {
   const defaultProps = {
     name: "saveButton",
     defaultStatus: 0,
+    parent: TestComponent,
     config: {
       type: "neo-button",
       label: "Save",
@@ -27,7 +29,7 @@ describe("Basic Button ", () => {
   it("calls the onClick action when clicked", () => {
     const { wrapper, props } = setup();
     wrapper.find('button').simulate('click');
-    expect(props.config.action).toMatchSnapshot();
+    expect(props.config.action).toHaveBeenCalled();
   });
 
 });

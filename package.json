@@ -8,11 +8,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "esw webpack.config.* src tools --color",
-    "lint:watch": "yarn run lint -- --watch",
-    "lint:fix": "yarn run lint -- --fix",
+    "lint:watch": "yarn run lint --watch",
+    "lint:fix": "yarn run lint --fix",
     "test": "jest",
-    "test:cover": "npm run test -- --coverage ",
-    "test:CI:cover": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:cover": "yarn run test --coverage ",
+    "test:CI:cover": "yarn run test --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "jest --watchAll"
   },
   "repository": {

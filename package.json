@@ -89,8 +89,20 @@
     "webpack": "4.17.1",
     "webpack-bundle-analyzer": "2.13.1"
   },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  },
   "babel": {
     "env": {
+      "development": {
+        "presets": [
+          "@babel/preset-env",
+          "@babel/preset-react"
+        ],
+        "plugins": [
+          "@babel/plugin-proposal-class-properties"
+        ]
+      },
       "production": {
         "presets": [
           [

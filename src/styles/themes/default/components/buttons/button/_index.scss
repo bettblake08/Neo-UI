@@ -3,6 +3,7 @@
 
 
 .neo-button {
+    $main: &;
     &:hover {
         opacity: 1.0;
         background-color: $color-primary;
@@ -10,6 +11,7 @@
         color: $color-primary-white;
         box-shadow: $box-shadow-light;
     }
+
     &,
     &--normal,
     &--fail,
@@ -28,16 +30,19 @@
         cursor: pointer;
         outline: none;
     }
+
     &,
     &--normal {
         color: $color-primary;
         border: solid .1rem $color-primary;
         opacity: 0.6;
     }
+
     &--inverted {
         color: $color-primary-white;
         border: solid .1rem $color-primary-white;
         opacity: 0.6;
+
         &:hover {
             opacity: 1.0;
             background-color: $color-primary;
@@ -45,49 +50,116 @@
             color: $color-primary-white;
         }
     }
+
     &--fail,
     &--success,
     &--loading,
     &--warning,
-    &--danger{
+    &--danger {
         color: $color-primary-white;
         border: solid .1rem transparent;
     }
+
     &--fail,
     &--success,
     &--loading {
         opacity: 1;
     }
+
     &--normal {
         background-color: transparent;
         opacity: 0.6;
+
         &:hover {
             background-color: $color-primary;
             color: $color-primary-white;
             opacity: 1;
         }
     }
+
     &--loading {
         background-color: $color-success-secondary;
         opacity: 1;
+
         &:hover {
             color: $color-primary-white;
         }
     }
+
     &--fail {
         background-color: $color-error-primary;
     }
+
     &--success {
         background-color: $color-success-primary;
     }
+
     &--warning {
         background-color: $color-warning-primary;
     }
+
     &--danger {
         background-color: $color-danger-primary;
         opacity: 0.6;
+
         &:hover {
             opacity: 1;
         }
     }
+
+    &__icon {
+        width: 33%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        border-right: none;
+        position: relative;
+
+        .icon::before {
+            font-size: 2rem;
+            top: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            fill: $color-primary-white;
+        }
+    }
+
+    &__label {
+        color: $color-primary-white;
+        padding: 0 1.5rem 0 0;
+        width: 66%;
+        text-align: center;
+        float: right;
+    }
+
+    &--normal &__label {
+        color: $color-primary;
+    }
+
+    &--fail &__label {
+        color: $color-error-primary;
+    }
+
+    &--success &__label {
+        color: $color-success-primary;
+    }
+
+    &--warning &__label {
+        color: $color-warning-primary;
+    }
+
+    &--danger &__label {
+        color: $color-danger-primary;
+    }
+    &--normal,
+    &--fail,
+    &--success,
+    &--loading,
+    &--warning,
+    &--danger {
+        &:hover #{$main}__label {
+            color: $color-primary-white;
+        }
+    }
+
 }

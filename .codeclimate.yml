@@ -1,0 +1,9 @@
+version: "2"
+exclude_patterns:
+- "config/"
+- "**/node_modules/"
+- "**/src/components/buttons/iconButton/"
+- "**/src/components/inputs/dateInput/"
+- "**/src/components/inputs/dropdownInput/"
+- "**/src/components/inputs/multiLineTextInput/"
+- "**/src/components/inputs/tagInput/"

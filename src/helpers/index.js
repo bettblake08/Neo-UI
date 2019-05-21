@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Regex from "./regex";
+import Common from "./common"
 
 export const STATUS_STRINGS = [
   "normal",
@@ -25,5 +26,6 @@ export const defaultReactiveUIDefaultProps = {
 
 export default {
   STATUS_STRINGS,
-  Regex
+  Regex,
+  Common
 };

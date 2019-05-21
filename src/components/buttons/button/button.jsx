@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
 
-import {
+import Helpers, {
   STATUS_STRINGS,
   defaultReactiveUIProps,
   defaultReactiveUIDefaultProps
@@ -16,32 +16,27 @@ class Button extends Component {
   }
 
   componentDidMount(){
-    const button = this;
-    const { componentStateKey, parent, name } = this.props;
-    parent.setState(state => ({
-      [componentStateKey]: {
-        ...state[componentStateKey],
-        [name]: button
-      }
-    }));
+    Helpers.Common.attachToParentComponent(this);
   }
     
   componentDidUpdate(){
-    const { status } = this.state;
-    const { defaultStatus } = this.props;
-    if ([1,2].includes(status)) {
-      const component = this;
-      setTimeout(() => {
-        component.setState({status: defaultStatus });
-      }, 3000);
-    }
+    Helpers.Common.resetInteractiveComponentStatus(this);
   }
 
 	setStatus = status => this.setState({
 	  status: STATUS_STRINGS.findIndex(string => string === status) || 0
 	});
 
-	render() {
+  setIcon = config => (
+    <>
+      <div className={`${config.type}__icon`}>
+        <i className={`fas fa-${config.icon} icon`}/>
+      </div>
+      <div className={`${config.type}__label f_normal`}>{config.label}</div>
+    </>
+  )
+  
+  render() {
 	  const { config } = this.props;
 	  const { status } = this.state;
 	  const statusText = STATUS_STRINGS[status];
@@ -54,10 +49,12 @@ class Button extends Component {
 	      className={classValue}
 	      onClick={config.action}
 	    >
-	      {config.label || ""}
+        {
+          config.icon ? this.setIcon(config) : config.label
+        }
 	    </button>
 	  );
-	}
+  }
 }
 
 Button.propTypes = {

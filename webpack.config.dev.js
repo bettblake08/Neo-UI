@@ -1,7 +1,7 @@
-import path from "path";
-import HardSourceWebpackPlugin from "hard-source-webpack-plugin"; 
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const path = require("path");
 
-export default {
+module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx", ".json"]
   },

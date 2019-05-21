@@ -44,7 +44,7 @@ class IconButton extends Component {
     const classValue = config.class + "--" + status;
         
     return (
-      <div className={classValue} onClick={   config.action  }>
+      <div className={classValue} onClick={config.action}>
         <svg className="icon">
           <use xlinkHref={"#" + config.icon} />
         </svg>

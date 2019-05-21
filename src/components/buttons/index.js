@@ -4,6 +4,6 @@ import IconButton from "./iconButton";
 
 export default {
   Button,
-  ButtonWithIcon,
-  IconButton
+  // ButtonWithIcon,
+  // IconButton
 };

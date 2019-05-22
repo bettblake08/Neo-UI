@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-import {
+import Helpers, {
   STATUS_STRINGS,
   defaultReactiveUIProps,
-  defaultReactiveUIDefaultProps,
-  Regex
+  defaultReactiveUIDefaultProps
 } from "../../../helpers";
 
 
@@ -52,7 +51,7 @@ class TextInput extends Component {
 	    const { inputValue, lastTyped } = component.state;
 	    const { config: { regex, action } } = component.props;
 	    if ((Date.now() - lastTyped) >= 1000) {
-	      if (regex instanceof String) component.setStatus(Regex[regex].test(inputValue) ? 6 : 5);
+	      if (regex instanceof String) component.setStatus(Helpers.Regex[regex].test(inputValue) ? 6 : 5);
 	      else if (regex) component.setStatus(regex.test(inputValue) ? 6 : 5);
 	      action();
 	    }

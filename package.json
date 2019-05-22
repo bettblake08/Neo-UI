@@ -2,9 +2,14 @@
   "name": "Neo-UI",
   "version": "1.0.0",
   "description": "This packages is a collection of React UI input components",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
-    "build": "babel-node tools/build.js",
+    "build": "rm -rf dist && babel-node tools/build.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "esw webpack.config.* src tools --color",
@@ -31,7 +36,7 @@
     "url": "https://github.com/bettblake08/Neo-UI/issues"
   },
   "homepage": "https://github.com/bettblake08/Neo-UI#readme",
-  "dependencies": {
+  "peerDependencies": {
     "@emotion/core": "^10.0.10",
     "react": "16.4.2",
     "react-dom": "16.4.2",
@@ -87,9 +92,12 @@
     "rimraf": "2.6.2",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
+    "terser-webpack-plugin": "^1.2.4",
     "url-loader": "1.1.1",
     "webpack": "4.17.1",
-    "webpack-bundle-analyzer": "2.13.1"
+    "webpack-bundle-analyzer": "2.13.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.1"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"

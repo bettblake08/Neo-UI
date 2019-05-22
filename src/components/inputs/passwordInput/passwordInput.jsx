@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { statusStrings } from "./helpers";
+import { STATUS_STRINGS } from "../../../helpers";
 
 class PasswordInput extends Component {
 
@@ -98,7 +98,7 @@ class PasswordInput extends Component {
 	  var errorClass = `f_comment_1 ${config.class}__error--`;
 	  var commentClass = `f_comment_1 ${config.class}__comment--`;
 
-	  var mainClass = `${config.class}--${statusStrings[status]} ${
+	  var mainClass = `${config.class}--${STATUS_STRINGS[status]} ${
 	    config.floatingLabel ? "f_input_1 has-float-label" : ""
 	  }`;
 

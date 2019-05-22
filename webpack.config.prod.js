@@ -1,34 +1,22 @@
-const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require("path");
-
-const themesRoot = "src/styles/themes";
-
-const themes = [
-  `${themesRoot}/default/index.scss`
-];
 
 module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx", ".json"]
   },
-  devtool: "source-map",
-  entry: [
-    path.resolve(__dirname, "src/index"),
-    ...themes
-  ],
+  entry: {
+    index: path.resolve(__dirname, "src/index"),
+    default: path.resolve(__dirname, "src/styles/themes/default")
+  },
   mode: "production",
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    filename: "dist.js"
+    filename: "[name].js"
   },
-  plugins: [
-    new webpack.DefinePlugin(),
-    new MiniCssExtractPlugin({
-      filename: "[name].css"
-    })
-  ],
   module: {
     rules: [
       {
@@ -98,32 +86,26 @@ module.exports = {
         ]
       },
       {
-        test: /(\.css|\.scss|\.sass)$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
-            options: {
-              sourceMap: true
-            }
-          }, {
-            loader: "postcss-loader",
-            options: {
-              plugins: () => [
-                require("cssnano"),
-                require("autoprefixer"),
-              ],
-              sourceMap: true
-            }
-          }, {
-            loader: "sass-loader",
-            options: {
-              includePaths: [path.resolve(__dirname, "src", "scss")],
-              sourceMap: true
-            }
-          }
+            loader: MiniCssExtractPlugin.loader
+          },
+          "css-loader",
+          "sass-loader"
         ]
       }
+    ]
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: `themes/[name].css`
+    })
+  ],
+  optimization: {
+    minimizer: [
+      new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({})
     ]
   }
 };

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import PasswordInput from "../passwordInput";
-import { statusStrings } from "./helpers";
+// import { statusStrings } from "./helpers";
 
 class NewPasswordInput extends Component {
 	static propTypes = {

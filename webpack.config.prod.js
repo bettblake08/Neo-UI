@@ -102,10 +102,10 @@ module.exports = {
       filename: `themes/[name].css`
     })
   ],
-  optimization: {
-    minimizer: [
-      new TerserJSPlugin({}),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  }
+  // optimization: {
+  //   minimizer: [
+  //     new TerserJSPlugin({}),
+  //     new OptimizeCSSAssetsPlugin({})
+  //   ]
+  // }
 };

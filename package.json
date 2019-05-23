@@ -1,5 +1,5 @@
 {
-  "name": "Neo-UI",
+  "name": "@bettbrian08/neo-ui-react",
   "version": "1.0.0",
   "description": "This packages is a collection of React UI input components",
   "main": "dist/index.js",

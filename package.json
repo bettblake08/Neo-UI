@@ -1,6 +1,6 @@
 {
   "name": "Neo-UI",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "This packages is a collection of React UI input components",
   "main": "dist/index.js",
   "module": "dist/index.js",

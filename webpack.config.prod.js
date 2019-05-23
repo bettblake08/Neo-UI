@@ -1,7 +1,8 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserJSPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const TerserJSPlugin = require('terser-webpack-plugin');
+// const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require("path");
+const circularImportPlugin = require("./tools/circularImportDetection");
 
 module.exports = {
   resolve: {
@@ -11,11 +12,16 @@ module.exports = {
     index: path.resolve(__dirname, "src/index"),
     default: path.resolve(__dirname, "src/styles/themes/default")
   },
-  mode: "production",
+  mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    filename: "[name].js"
+    filename: (chunkData) => {
+      return chunkData.chunk.name === 'index' ? '[name].js' : 'themes/[name].js';
+    },
+    library: '@bettbrian08/neo-ui-react',
+    libraryTarget: 'umd',
+    globalObject: "typeof self !== 'undefined' ? self : this"
   },
   module: {
     rules: [
@@ -100,12 +106,13 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: `themes/[name].css`
-    })
+    }),
+    circularImportPlugin
   ],
-  optimization: {
-    minimizer: [
-      new TerserJSPlugin({}),
-      new OptimizeCSSAssetsPlugin({})
-    ]
-  }
+  // optimization: {
+  //   minimizer: [
+  //     new TerserJSPlugin({}),
+  //     new OptimizeCSSAssetsPlugin({})
+  //   ]
+  // }
 };

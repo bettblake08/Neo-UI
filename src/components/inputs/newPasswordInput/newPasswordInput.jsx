@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import PasswordInput from "../passwordInput";
-// import { statusStrings } from "./helpers";
+
+import TextInput from "../textInput";
+import Helpers from "../../../helpers";
 
 class NewPasswordInput extends Component {
 	static propTypes = {
@@ -13,57 +14,48 @@ class NewPasswordInput extends Component {
 	constructor(props) {
 	  super(props);
 	  this.state = { 
-	    passwordInputs: [],
+	    passwordInputs: {},
 	    lastTyped: Date.now(),
 	    inputValue: ""
 	  };
-
-	  this.checkPasswords = this.checkPasswords.bind(this);
-	  this.renderPassword = this.renderPassword.bind(this);
-	  this.focus = this.focus.bind(this);
 	}
 
 	componentDidMount(){
-	  const { parent } = this.props;
-	  parent.setState({
-	    newPasswordInput: this
-	  });
+	  Helpers.Common.attachToParentComponent(this);
 	}
 
 	checkPasswords(){
-	  const c = this;
+	  const component = this;
 	  this.setState({ lastTyped: Date.now() });
 
 	  setTimeout(() => {
-	    const { passwordInputs, lastTyped } = c.state;
+	    const { passwordInputs, lastTyped } = component.state;
 	    if ((Date.now() - lastTyped) >= 1000) {
 	      const isValid = passwordInputs[0].state.status === 6
 					&& passwordInputs[1].state.status === 6
 					&& passwordInputs[0].state.inputValue === passwordInputs[1].state.inputValue;
 	      const inputValue = isValid ? passwordInputs[0].state.inputValue : "";
-	      c.setState({ inputValue });
+	      component.setState({ inputValue });
 	    }
 	  }, 1000);
 	}
 
 	renderPassword = index => (
 	  <div className="pass">
-	    <PasswordInput
+	    <TextInput
 	      parent={this}
-	      status={0}
-	      index={index}
-	      regex={this.props.regex}
+	      componentStateKey='passwordInputs'
+	      name={`password-${index}`}
+	      regex={this.props.regex}				
 	      config={{
-	        class: "text_input_4",
 	        floatingLabel: true,
-	        label: index === 1 ? "Password" : "Re-enter Password",
-	        placeholder: this.props.config.placeholder,
+	        type: "neo-text-input",
 	        action: this.checkPasswords
 	      }} />
 	  </div>
 	);
 
-	focus = () => this.state.passwordInputs[0].focus();
+	focus = () => this.state.passwordInputs['password-1'].focus();
 
 	render() {
 	  return (
@@ -74,7 +66,5 @@ class NewPasswordInput extends Component {
 	  );
 	}
 }
-
-
 
 export default NewPasswordInput;

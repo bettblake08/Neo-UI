@@ -74,6 +74,8 @@ class TextInput extends Component {
 	  alertText
 	})
 
+	isValid = () => this.state.status === 5;
+
 	render() {
 	  const { inputValue, alertText, status } = this.state;
 	  const { config } = this.props;

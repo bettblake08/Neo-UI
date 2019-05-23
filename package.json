@@ -11,7 +11,7 @@
   "scripts": {
     "build": "rm -rf dist && babel-node tools/build.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o docs",
     "lint": "esw webpack.config.* src tools --color",
     "lint:watch": "yarn run lint --watch",
     "lint:fix": "yarn run lint --fix",

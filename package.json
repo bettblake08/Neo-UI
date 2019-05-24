@@ -75,6 +75,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-react": "^7.12.3",
     "eslint-watch": "4.0.2",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "2.0.0",
     "hard-source-webpack-plugin": "0.12.0",
     "jest": "23.5.0",
@@ -83,6 +84,7 @@
     "mini-css-extract-plugin": "0.4.2",
     "node-sass": "4.12.0",
     "opn-cli": "3.1.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "3.0.0",
     "prompt": "1.0.0",
     "prop-types": "15.6.2",
@@ -95,9 +97,7 @@
     "terser-webpack-plugin": "^1.2.4",
     "url-loader": "1.1.1",
     "webpack": "4.17.1",
-    "webpack-bundle-analyzer": "2.13.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "optimize-css-assets-webpack-plugin": "^5.0.1"
+    "webpack-bundle-analyzer": "2.13.1"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
@@ -152,5 +152,8 @@
       "raf/polyfill",
       "./tools/enzymeTestAdapterSetup.js"
     ]
+  },
+  "dependencies": {
+    "circular-dependency-plugin": "^5.0.2"
   }
 }

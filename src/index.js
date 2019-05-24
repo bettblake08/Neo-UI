@@ -1,7 +1,7 @@
-import buttons from "./components/buttons";
-import inputs from "./components/inputs";
+import { Button } from "./components/buttons";
+import { TextInput } from "./components/inputs";
 
 export default {
-  ...buttons,
-  ...inputs
+  Button,
+  TextInput
 }

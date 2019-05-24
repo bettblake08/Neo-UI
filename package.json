@@ -1,6 +1,6 @@
 {
   "name": "@bettbrian08/neo-ui-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "This packages is a collection of React UI input components",
   "main": "src/index.js",
   "module": "src/index.js",

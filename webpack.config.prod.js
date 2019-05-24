@@ -16,7 +16,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",
-    filename: "[name].js"
+    filename: (chunkData) => {
+      return chunkData.chunk.name === 'index' ? '[name].js' : 'themes/[name].js';
+    },
+    library: '@bettbrian08/neo-ui-react',
+    libraryTarget: 'umd',
+    globalObject: "typeof self !== 'undefined' ? self : this"
   },
   module: {
     rules: [

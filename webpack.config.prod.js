@@ -12,7 +12,7 @@ module.exports = {
     index: path.resolve(__dirname, "src/index"),
     default: path.resolve(__dirname, "src/styles/themes/default")
   },
-  mode: "development",
+  mode: "production",
   output: {
     path: path.resolve(__dirname, "dist"),
     publicPath: "/",

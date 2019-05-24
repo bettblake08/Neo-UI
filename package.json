@@ -2,10 +2,11 @@
   "name": "@bettbrian08/neo-ui-react",
   "version": "1.0.4",
   "description": "This packages is a collection of React UI input components",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "files": [
     "dist",
+    "src",
     "README.md"
   ],
   "scripts": {

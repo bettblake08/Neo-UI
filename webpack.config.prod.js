@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // const TerserJSPlugin = require('terser-webpack-plugin');
 // const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require("path");
+const circularImportPlugin = require("./tools/circularImportDetection");
 
 module.exports = {
   resolve: {
@@ -100,7 +101,8 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: `themes/[name].css`
-    })
+    }),
+    circularImportPlugin
   ],
   // optimization: {
   //   minimizer: [

@@ -28,15 +28,20 @@ class Button extends Component {
 	  status: STATUS_STRINGS.findIndex(string => string === status) || 0
 	});
 
+  renderIcon = icon => {
+    if (typeof icon === 'string') return (<i className={`fas fa-${icon} icon`} />);
+    return icon;
+  }
+
   setIcon = config => (
     <>
       <div className={`${config.type}__icon`}>
-        <i className={`fas fa-${config.icon} icon`}/>
+        {this.renderIcon(config.icon)}
       </div>
       <div className={`${config.type}__label f_normal`}>{config.label}</div>
     </>
   )
-  
+
   render() {
 	  const { config } = this.props;
 	  const { status } = this.state;
@@ -63,7 +68,11 @@ Button.propTypes = {
   config: PropTypes.shape({
     type: PropTypes.string,
     action: PropTypes.func,
-    label: PropTypes.string
+    label: PropTypes.string,
+    icon: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.shape()
+    ])
   }).isRequired
 };
 

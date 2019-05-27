@@ -5,7 +5,7 @@ import "./baseComponent.scss";
 
 export default class BaseComponent extends Component {
 	static propTypes = {
-	  children: PropTypes.instanceOf(Array).isRequired
+	  children: PropTypes.shape({}).isRequired
 	}
 
 	constructor(props) {

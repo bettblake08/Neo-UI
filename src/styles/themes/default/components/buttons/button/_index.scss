@@ -1,7 +1,6 @@
 @import "../../../abstracts/variables";
 @import "../../../abstracts/mixins";
 
-
 .neo-button {
     $main: &;
     &:hover {
@@ -161,5 +160,4 @@
             color: $color-primary-white;
         }
     }
-
 }

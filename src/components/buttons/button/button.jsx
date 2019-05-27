@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Helpers, {
   STATUS_STRINGS,
+  COMPONENT_STATUS_CLASS,
   defaultReactiveUIProps,
   defaultReactiveUIDefaultProps
 } from "../../../helpers";
@@ -39,7 +40,7 @@ class Button extends Component {
   render() {
 	  const { config } = this.props;
 	  const { status } = this.state;
-	  const statusText = STATUS_STRINGS[status];
+    const statusText = COMPONENT_STATUS_CLASS[status];
 
 	  const classValue = `${config.type || 'neo-button'}--${statusText} neo-font--button--2 neo-font--text-capitalize`;
     

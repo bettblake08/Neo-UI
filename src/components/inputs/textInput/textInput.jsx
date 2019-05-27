@@ -75,16 +75,16 @@ class TextInput extends Component {
 	  const { inputValue, alertText, status } = this.state;
 	  const { config, name } = this.props;
 	  const label = config.label || name;
+	  const typeClass = config.type || "neo-text-input";
+	  const errorClass = `neo-font--comment ${typeClass}__error--`;
+	  const commentClass = `neo-font--comment ${typeClass}__comment--`;
 
-	  const errorClass = `neo-font--comment ${config.type}__error--`;
-	  const commentClass = `neo-font--comment ${config.type}__comment--`;
-
-	  let mainClass = `${config.type}--${COMPONENT_STATUS_CLASS[status]}`;
+	  let mainClass = `${typeClass}--${COMPONENT_STATUS_CLASS[status]}`;
 	  mainClass += config.floatingLabel ? " neo-font--input has-float-label" : "";
 		
 	  return (
 	    <div className={mainClass} >
-	      <div className={`${config.type}__label neo-font--input`}>{label}</div>
+	      <div className={`${typeClass}__label neo-font--input`}>{label}</div>
 
 	      <input
 	        id={label.replace(" ", "")}

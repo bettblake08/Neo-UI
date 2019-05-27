@@ -43,8 +43,13 @@ describe("Basic Button ", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("renders as expected", () => {
+  it("renders with icon as expected", () => {
     const { wrapper } = setup({ config: { ...defaultProps.config, icon: "save" }});
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it("renders with JSX as icon as expected", () => {
+    const { wrapper } = setup({ config: { ...defaultProps.config, icon: <i className="fas fa-save icon" /> } });
     expect(wrapper).toMatchSnapshot();
   });
 

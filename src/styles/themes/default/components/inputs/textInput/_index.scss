@@ -32,10 +32,10 @@
     }
     &,
     &--normal {
-        color: $color-secondary;
+        color: $color-primary;
         input {
-            color: $color-secondary;
-            border-bottom: solid .2rem $color-secondary;
+            color: $color-primary;
+            border-bottom: solid .2rem $color-primary;
             &:hover {
                 border-bottom-width: .3rem;
             }

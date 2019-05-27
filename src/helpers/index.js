@@ -8,6 +8,16 @@ export const STATUS_STRINGS = [
   "success",
   "loading",
   "warning",
+  "fail:fixed",
+  "success:fixed",
+];
+
+export const COMPONENT_STATUS_CLASS = [
+  "normal",
+  "fail",
+  "success",
+  "loading",
+  "warning",
   "fail",
   "success",
 ];

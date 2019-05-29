@@ -4903,7 +4903,6 @@ ReactWrapper {
         },
         "memoizedState": Object {
           "alertText": "",
-          "inputLength": 999,
           "inputValue": "",
           "status": 0,
         },
@@ -10515,7 +10514,6 @@ ReactWrapper {
       "setStatus": [Function],
       "state": Object {
         "alertText": "",
-        "inputLength": 999,
         "inputValue": "",
         "status": 0,
       },
@@ -15290,7 +15288,6 @@ ReactWrapper {
           },
           "memoizedState": Object {
             "alertText": "",
-            "inputLength": 999,
             "inputValue": "",
             "status": 0,
           },
@@ -20902,7 +20899,6 @@ ReactWrapper {
         "setStatus": [Function],
         "state": Object {
           "alertText": "",
-          "inputLength": 999,
           "inputValue": "",
           "status": 0,
         },

@@ -24,7 +24,7 @@ export default class BaseComponent extends Component {
         const { neoComponents } = this.state;
         neoComponents['saveButton'].setStatus('loading');
         this.delay().then(() => {
-            neoComponents[inputName].setStatus('fail');
+            neoComponents['saveButton'].setStatus('fail');
         });
     }
 

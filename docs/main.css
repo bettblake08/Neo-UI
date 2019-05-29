@@ -1135,13 +1135,13 @@ a, a:hover, a:active {
         color: #CCC;
         color: var(--neo-color--grey--light); }
   .neo-text-input, .neo-text-input--normal {
-    color: #13ff82;
-    color: var(--neo-color--secondary); }
+    color: rgb(0, 148, 104);
+    color: var(--neo-color--primary); }
     .neo-text-input input, .neo-text-input--normal input {
-      color: #13ff82;
-      color: var(--neo-color--secondary);
-      border-bottom: solid 0.2rem #13ff82;
-      border-bottom: solid 0.2rem var(--neo-color--secondary); }
+      color: rgb(0, 148, 104);
+      color: var(--neo-color--primary);
+      border-bottom: solid 0.2rem rgb(0, 148, 104);
+      border-bottom: solid 0.2rem var(--neo-color--primary); }
       .neo-text-input input:hover, .neo-text-input--normal input:hover {
         border-bottom-width: .3rem; }
   .neo-text-input--loading {

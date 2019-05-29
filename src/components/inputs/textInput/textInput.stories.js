@@ -1,9 +1,13 @@
+/* eslint-disable import/first */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+
 import TextInput from "./textInput";
 import BaseComponent from "../BaseComponent";
 import TextInputConfig from "./notes/config.md"
 import { loadNotes, getNotes } from "../../../helpers/storybook";
+
 
 const Notes = loadNotes(
   require.context('./notes/', false, /\.md$/),
@@ -21,20 +25,23 @@ const setupTextInput = (configProps = {}) => (
   <TextInput
     defaultStatus={configProps.defaultStatus || 0}
     name="email"
+    parent={{}}
     config={{
-      floatingLabel: true,
-      label: "Email Address",
-      length: 30,
-      placeholder: "Any placeholder",
+      floatingLabel: boolean("Enable floating label", true),
+      comment: text("Comment", null),
+      label: text("Input label", "Email Address"),
+      length: number("Input length", 30),
+      placeholder: text("Placeholder", "Any placeholder"),
       ...configProps
     }} />
 );
 
 storiesOf('Inputs/TextInput', module)
   .addDecorator(storyFunc => <BaseComponent>{storyFunc()}</BaseComponent>)
+  .addDecorator(withKnobs)
   .add('basic', () => setupTextInput(), getNotes(Notes.basicTextInput))
   .add('with comment', () => setupTextInput({
-    comment: "This is a test comment."
+    comment: text("Comment", "This is a test comment.")
   }), getNotes(Notes.basicWithComment))
   .add('with no placeholder', () => setupTextInput({
     placeholder: null

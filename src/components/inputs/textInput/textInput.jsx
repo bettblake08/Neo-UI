@@ -16,8 +16,7 @@ class TextInput extends Component {
     this.state = {
       status: props.defaultStatus,
       alertText: "",
-      inputValue: props.config.inputValue || "",
-      inputLength: props.config.length || 999
+      inputValue: props.config.inputValue || ""
     }
 
     this.textInputRef = React.createRef();
@@ -33,7 +32,11 @@ class TextInput extends Component {
  
 	handleValueChange = e => {
 	  const component = this;
-	  this.setState({ lastTyped: Date.now(), inputValue: e.target.value });
+	  const { config: { length } } = this.props;
+	  this.setState({
+	    lastTyped: Date.now(),
+	    inputValue: e.target.value.substr(0, length || 999)
+	  });
 
 	  setTimeout(() => {
 	    const { inputValue, lastTyped } = component.state;
@@ -117,7 +120,7 @@ TextInput.propTypes = {
     length: PropTypes.number,
     testInput: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.symbol,
+      PropTypes.instanceOf(RegExp),
       PropTypes.func		
     ]),
   }).isRequired

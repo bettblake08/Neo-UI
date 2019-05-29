@@ -2,6 +2,7 @@
 [![CircleCI](https://circleci.com/gh/bettblake08/Neo-UI.svg?style=svg)](https://circleci.com/gh/bettblake08/Neo-UI)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c0eabe343848efaf00c3/maintainability)](https://codeclimate.com/github/bettblake08/Neo-UI/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c0eabe343848efaf00c3/test_coverage)](https://codeclimate.com/github/bettblake08/Neo-UI/test_coverage)
+[![Known Vulnerabilities](https://snyk.io/test/github/bettblake08/Neo-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/bettblake08/Neo-UI?targetFile=package.json)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)][2]
 
 ## Description

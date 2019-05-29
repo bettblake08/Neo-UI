@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import Helpers, {
   STATUS_STRINGS,
+  COMPONENT_STATUS_CLASS,
   defaultReactiveUIProps,
   defaultReactiveUIDefaultProps
 } from "../../../helpers";
@@ -15,49 +16,43 @@ class TextInput extends Component {
     this.state = {
       status: props.defaultStatus,
       alertText: "",
-      inputValue: props.config.inputValue || "",
-      inputLength: props.config.length || 999
+      inputValue: props.config.inputValue || ""
     }
 
     this.textInputRef = React.createRef();
   }
 
   componentDidMount() {
-    const { parent, componentStateKey, name } = this.props;
-    parent.setState(state => ({
-      [componentStateKey]: {
-        ...state[componentStateKey],
-        [name]: this
-      }
-    }));
+    Helpers.Common.attachToParentComponent(this);
   }
 
   componentDidUpdate() {
-    const { status } = this.state;
-    const { defaultStatus } = this.props;
-    if ([1, 2].includes(status)) {
-      const component = this;
-      setTimeout(() => {
-        component.setState({ status: defaultStatus });
-      }, 3000);
-    }
+    Helpers.Common.resetInteractiveComponentStatus(this);
   }
-
+ 
 	handleValueChange = e => {
 	  const component = this;
-	  this.setState({ lastTyped: Date.now(), inputValue: e.target.value });
+	  const { config: { length } } = this.props;
+	  this.setState({
+	    lastTyped: Date.now(),
+	    inputValue: e.target.value.substr(0, length || 999)
+	  });
 
 	  setTimeout(() => {
 	    const { inputValue, lastTyped } = component.state;
-	    const { config: { regex, action } } = component.props;
+	    const { config: { testInput } } = component.props;
+			
 	    if ((Date.now() - lastTyped) >= 1000) {
-	      if (regex instanceof String) component.setStatus(Helpers.Regex[regex].test(inputValue) ? 6 : 5);
-	      else if (regex) component.setStatus(regex.test(inputValue) ? 6 : 5);
-	      action();
+	      let status = 0;
+	      if (typeof testInput === "string") status = Helpers.Regex[testInput].test(inputValue) ? 6 : 5;
+	      else if (testInput instanceof RegExp) status = testInput.test(inputValue) ? 6 : 5;
+	      else if (testInput instanceof Function) status = testInput(inputValue) ? 6 : 5;
+
+	      component.setState({ status });
 	    }
 	  }, 1000);
 	};
-
+  
 	focus = () => this.textInputRef.current.focus();
 
 	setFloatingLabel = () => {
@@ -69,29 +64,33 @@ class TextInput extends Component {
 	  }
 	}
 
-	setStatus = (status, alertText = '') => this.setState({
-	  status: STATUS_STRINGS.findIndex(string => string === status) || 0,
-	  alertText
-	})
+	setStatus = (status, alertText = '') => {
+	  const statusIndex = STATUS_STRINGS.findIndex(string => string === status)
+	  this.setState({
+	    status:  statusIndex > 0 ? statusIndex : 0,
+	    alertText
+	  })
+	}
 
 	isValid = () => this.state.status === 5;
 
 	render() {
 	  const { inputValue, alertText, status } = this.state;
-	  const { config } = this.props;
+	  const { config, name } = this.props;
+	  const label = config.label || name;
+	  const typeClass = config.type || "neo-text-input";
+	  const errorClass = `neo-font--comment ${typeClass}__error--`;
+	  const commentClass = `neo-font--comment ${typeClass}__comment--`;
 
-	  const errorClass = `neo-font--comment ${config.type}__error--`;
-	  const commentClass = `neo-font--comment ${config.type}__comment--`;
-
-	  let mainClass = `${config.type}--${STATUS_STRINGS[status]}`;
+	  let mainClass = `${typeClass}--${COMPONENT_STATUS_CLASS[status]}`;
 	  mainClass += config.floatingLabel ? " neo-font--input has-float-label" : "";
-
+		
 	  return (
 	    <div className={mainClass} >
-	      <div className={`${config.type}__label neo-font--input`}>{config.label}</div>
+	      <div className={`${typeClass}__label neo-font--input`}>{label}</div>
 
 	      <input
-	        id={config.label.replace(" ", "")}
+	        id={label.replace(" ", "")}
 	        ref={this.textInputRef}
 	        type="text"
 	        className="neo-font--input"
@@ -119,9 +118,10 @@ TextInput.propTypes = {
     comment: PropTypes.string,
     inputValue: PropTypes.string,
     length: PropTypes.number,
-    regex: PropTypes.oneOfType([
+    testInput: PropTypes.oneOfType([
       PropTypes.string,
-      PropTypes.symbol
+      PropTypes.instanceOf(RegExp),
+      PropTypes.func		
     ]),
   }).isRequired
 }

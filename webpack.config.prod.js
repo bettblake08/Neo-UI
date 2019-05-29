@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const circularImportPlugin = require("./tools/circularImportDetection");
 
+
 module.exports = {
   resolve: {
     extensions: ["*", ".js", ".jsx", ".json"]

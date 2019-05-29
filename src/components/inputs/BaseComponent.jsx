@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import Regex from "../../helpers/regex";
 
 import "./baseComponent.scss";
 
 export default class BaseComponent extends Component {
 	static propTypes = {
-	  children: PropTypes.instanceOf(Array).isRequired
+	  children: PropTypes.shape({}).isRequired
 	}
 
 	constructor(props) {
@@ -14,16 +15,6 @@ export default class BaseComponent extends Component {
 	  this.state = {
 	    neoComponents: {}
 	  }
-	}
-
-	delay = () => new Promise(resolve => setTimeout(() => resolve(), 2000));
-
-	onClick = (inputName, status) => {
-	  const { neoComponents } = this.state;
-	  neoComponents[inputName].setStatus('loading');
-	  this.delay().then(() => {
-	    neoComponents[inputName].setStatus(status);
-	  });
 	}
 
 	getClone = () => {
@@ -35,7 +26,7 @@ export default class BaseComponent extends Component {
 	      parent: this,
 	      config: {
 	        ...props.config,
-	        action: () => this.onClick(props.name, props.config.action().actionStatus)
+	        testInput: Regex.email
 	      }
 	    })
 	}

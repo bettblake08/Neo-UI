@@ -91,3 +91,504 @@ ShallowWrapper {
   },
 }
 `;
+
+exports[`Basic Button  renders with JSX as icon as expected 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    componentStateKey="neoComponents"
+    config={
+      Object {
+        "action": [MockFunction],
+        "icon": <i
+          className="fas fa-save icon"
+        />,
+        "label": "Save",
+        "type": "neo-button",
+      }
+    }
+    defaultStatus={0}
+    name="saveButton"
+    parent={
+      Object {
+        "setState": [MockFunction] {
+          "calls": Array [
+            Array [
+              [Function],
+            ],
+            Array [
+              [Function],
+            ],
+            Array [
+              [Function],
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        },
+        "state": Object {},
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <React.Fragment>
+        <div
+          className="neo-button__icon"
+        >
+          <i
+            className="fas fa-save icon"
+          />
+        </div>
+        <div
+          className="neo-button__label f_normal"
+        >
+          Save
+        </div>
+      </React.Fragment>,
+      "className": "neo-button--normal neo-font--button--2 neo-font--text-capitalize",
+      "onClick": [MockFunction],
+      "type": "button",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <div
+            className="neo-button__icon"
+          >
+            <i
+              className="fas fa-save icon"
+            />
+          </div>,
+          <div
+            className="neo-button__label f_normal"
+          >
+            Save
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <i
+              className="fas fa-save icon"
+            />,
+            "className": "neo-button__icon",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "fas fa-save icon",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "i",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Save",
+            "className": "neo-button__label f_normal",
+          },
+          "ref": null,
+          "rendered": "Save",
+          "type": "div",
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+    "type": "button",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <React.Fragment>
+          <div
+            className="neo-button__icon"
+          >
+            <i
+              className="fas fa-save icon"
+            />
+          </div>
+          <div
+            className="neo-button__label f_normal"
+          >
+            Save
+          </div>
+        </React.Fragment>,
+        "className": "neo-button--normal neo-font--button--2 neo-font--text-capitalize",
+        "onClick": [MockFunction],
+        "type": "button",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <div
+              className="neo-button__icon"
+            >
+              <i
+                className="fas fa-save icon"
+              />
+            </div>,
+            <div
+              className="neo-button__label f_normal"
+            >
+              Save
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <i
+                className="fas fa-save icon"
+              />,
+              "className": "neo-button__icon",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "fas fa-save icon",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "i",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Save",
+              "className": "neo-button__label f_normal",
+            },
+            "ref": null,
+            "rendered": "Save",
+            "type": "div",
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      "type": "button",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;
+
+exports[`Basic Button  renders with icon as expected 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Button
+    componentStateKey="neoComponents"
+    config={
+      Object {
+        "action": [MockFunction],
+        "icon": "save",
+        "label": "Save",
+        "type": "neo-button",
+      }
+    }
+    defaultStatus={0}
+    name="saveButton"
+    parent={
+      Object {
+        "setState": [MockFunction] {
+          "calls": Array [
+            Array [
+              [Function],
+            ],
+            Array [
+              [Function],
+            ],
+          ],
+          "results": Array [
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+            Object {
+              "isThrow": false,
+              "value": undefined,
+            },
+          ],
+        },
+        "state": Object {},
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <React.Fragment>
+        <div
+          className="neo-button__icon"
+        >
+          <i
+            className="fas fa-save icon"
+          />
+        </div>
+        <div
+          className="neo-button__label f_normal"
+        >
+          Save
+        </div>
+      </React.Fragment>,
+      "className": "neo-button--normal neo-font--button--2 neo-font--text-capitalize",
+      "onClick": [MockFunction],
+      "type": "button",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <div
+            className="neo-button__icon"
+          >
+            <i
+              className="fas fa-save icon"
+            />
+          </div>,
+          <div
+            className="neo-button__label f_normal"
+          >
+            Save
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <i
+              className="fas fa-save icon"
+            />,
+            "className": "neo-button__icon",
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "fas fa-save icon",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "i",
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Save",
+            "className": "neo-button__label f_normal",
+          },
+          "ref": null,
+          "rendered": "Save",
+          "type": "div",
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
+    "type": "button",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <React.Fragment>
+          <div
+            className="neo-button__icon"
+          >
+            <i
+              className="fas fa-save icon"
+            />
+          </div>
+          <div
+            className="neo-button__label f_normal"
+          >
+            Save
+          </div>
+        </React.Fragment>,
+        "className": "neo-button--normal neo-font--button--2 neo-font--text-capitalize",
+        "onClick": [MockFunction],
+        "type": "button",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <div
+              className="neo-button__icon"
+            >
+              <i
+                className="fas fa-save icon"
+              />
+            </div>,
+            <div
+              className="neo-button__label f_normal"
+            >
+              Save
+            </div>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <i
+                className="fas fa-save icon"
+              />,
+              "className": "neo-button__icon",
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "fas fa-save icon",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "i",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Save",
+              "className": "neo-button__label f_normal",
+            },
+            "ref": null,
+            "rendered": "Save",
+            "type": "div",
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      "type": "button",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

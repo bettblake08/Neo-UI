@@ -7,6 +7,7 @@ import TextInput from "./textInput";
 import BaseComponent from "../BaseComponent";
 import TextInputConfig from "./notes/config.md"
 import { loadNotes, getNotes } from "../../../helpers/storybook";
+import Regex from "../../../helpers/regex";
 
 
 const Notes = loadNotes(
@@ -32,6 +33,7 @@ const setupTextInput = (configProps = {}) => (
       label: text("Input label", "Email Address"),
       length: number("Input length", 30),
       placeholder: text("Placeholder", "Any placeholder"),
+      testInput: Regex.email,
       ...configProps
     }} />
 );

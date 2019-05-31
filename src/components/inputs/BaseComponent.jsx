@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
-import Regex from "../../helpers/regex";
 
 import "./baseComponent.scss";
 
@@ -21,14 +20,7 @@ export default class BaseComponent extends Component {
 	  const { children } = this.props;
 	  const { props } = children;
 
-	  return React.cloneElement(children,
-	    {
-	      parent: this,
-	      config: {
-	        ...props.config,
-	        testInput: Regex.email
-	      }
-	    })
+	  return React.cloneElement(children, { parent: this })
 	}
 
 	render() {

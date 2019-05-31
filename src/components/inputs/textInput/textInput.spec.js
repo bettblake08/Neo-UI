@@ -44,7 +44,7 @@ describe("TextInput ", () => {
     await waitForTest(() => {
       if (testInputSpy) expect(testInputSpy).toHaveBeenCalled();
       expect(wrapper.state('status')).toBe(testCase.status);
-      expect(wrapper.instance().isValid()).toBe(testCase.status === 5);
+      expect(wrapper.instance().isValid()).toBe(testCase.status === 6);
     });
   }
 
@@ -58,9 +58,19 @@ describe("TextInput ", () => {
     expect(wrapper.state('status')).toBe(testCase.statusNo);
   }
 
+  /**
+   * Tests the test input component using a success and failure scenario
+   * @param var Input test config
+   * @param function A jest spy for testing a function type test config
+  */
+  const runInputTest = async (testInput, testInputSpy = null) => {
+    await testTextInput({ testInput, value: "johndoe@emai", status: 5 }, testInputSpy);
+    await testTextInput({ testInput, value: "johndoe@email.com", status: 6 }, testInputSpy);
+  }
+
   it("renders as expected", () => {
     const { wrapper } = setup();
-    expect(wrapper).toMatchSnapshot();
+    wrapper.setState({ lastTyped: 0 }, () => expect(wrapper).toMatchSnapshot());
   });
 
   it("renders with minimal config props", async () => {
@@ -73,7 +83,7 @@ describe("TextInput ", () => {
         floatingLabel: false
       }
     }, true);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper).toBeDefined();
   });
 
   it("calls the onChange action when function test is valid", async () => {
@@ -82,18 +92,16 @@ describe("TextInput ", () => {
       testInputSpy();
       return Regex.email.test(inputValue)
     };
-    await testTextInput({ testInput, value: "johndoe@emai", status: 5 }, testInputSpy);
-    await testTextInput({ testInput, value: "johndoe@email.com", status: 6 }, testInputSpy);
+    await runInputTest(testInput, testInputSpy);
   });
 
-  it("calls the onChange action when regex test is valid", async () => {
-    await testTextInput({ testInput: Regex.email ,value: "johndoe@emai", status: 5});
-    await testTextInput({ testInput: Regex.email ,value: "johndoe@email.com", status: 6 });
-  });
+  it("calls the onChange action when regex test is valid", async () => await runInputTest(Regex.email));
 
-  it("calls the onChange action when regex name test is valid", async () => {
-    await testTextInput({ testInput: "email", value: "johndoe@emai", status: 5 });
-    await testTextInput({ testInput: "email", value: "johndoe@email.com", status: 6 });
+  it("calls the onChange action when regex name test is valid", async () => await runInputTest('email'));
+
+  it("calls the onChange action when using an invalid test config", async () => {
+    await testTextInput({testInput: 1 , value: "johndoe@emai", status: 0 });
+    await testTextInput({testInput: 1 , value: "johndoe@email.com", status: 0 });
   });
 
   it("focus on input successfully", async () => {
@@ -103,10 +111,13 @@ describe("TextInput ", () => {
     expect(spyOnInputFocus).toHaveBeenCalled();
   });
 
-  it("sets the state of the input as valid", async () => testSetStatusMethod({ params: ['success:fixed'], statusNo: 6 }));
+  it("sets the state of the input as valid", async () =>
+    testSetStatusMethod({ params: ['success:fixed'], statusNo: 6 }));
 
-  it("sets the state of the input as invalid", async () => testSetStatusMethod({ params: ['fail:fixed', 'Invalid input'], statusNo: 5 }));
+  it("sets the state of the input as invalid", async () =>
+    testSetStatusMethod({ params: ['fail:fixed', 'Invalid input'], statusNo: 5 }));
 
-  it("sets the state of the input with invalid status", async () => testSetStatusMethod({ params: ['correct:fixed' ], statusNo: 0 }));
+  it("sets the state of the input with invalid status", async () =>
+    testSetStatusMethod({ params: ['correct:fixed' ], statusNo: 0 }));
 
 });

@@ -2,6 +2,11 @@ import PropTypes from 'prop-types';
 import Regex from "./regex";
 import Common from "./common"
 
+export {
+  Regex,
+  Common
+}
+
 export const STATUS_STRINGS = [
   "normal",
   "fail",

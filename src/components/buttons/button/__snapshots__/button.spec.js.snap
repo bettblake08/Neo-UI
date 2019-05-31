@@ -9,7 +9,6 @@ ShallowWrapper {
       Object {
         "action": [MockFunction],
         "label": "Save",
-        "type": "neo-button",
       }
     }
     defaultStatus={0}
@@ -104,7 +103,6 @@ ShallowWrapper {
           className="fas fa-save icon"
         />,
         "label": "Save",
-        "type": "neo-button",
       }
     }
     defaultStatus={0}

@@ -24,9 +24,12 @@ class Button extends Component {
     Helpers.Common.resetInteractiveComponentStatus(this);
   }
 
-	setStatus = status => this.setState({
-	  status: STATUS_STRINGS.findIndex(string => string === status) || 0
-	});
+	setStatus = status => {
+	  const statusIndex = STATUS_STRINGS.findIndex(string => string === status);
+	  this.setState({
+	    status: statusIndex > 0 ? statusIndex : 0
+	  });
+	}
 
   renderIcon = icon => {
     if (typeof icon === 'string') return (<i className={`fas fa-${icon} icon`} />);
@@ -43,20 +46,20 @@ class Button extends Component {
   )
 
   render() {
-	  const { config } = this.props;
+	  const { config: { type = 'neo-button', label, action, icon } } = this.props;
 	  const { status } = this.state;
     const statusText = COMPONENT_STATUS_CLASS[status];
 
-	  const classValue = `${config.type || 'neo-button'}--${statusText} neo-font--button--2 neo-font--text-capitalize`;
+	  const classValue = `${type || 'neo-button'}--${statusText} neo-font--button--2 neo-font--text-capitalize`;
     
 	  return (
 	    <button
 	      type="button"
 	      className={classValue}
-	      onClick={config.action}
+	      onClick={action}
 	    >
         {
-          config.icon ? this.setIcon(config) : config.label
+          icon ? this.setIcon({ type, icon, label }) : label
         }
 	    </button>
 	  );

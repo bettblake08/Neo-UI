@@ -3,7 +3,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
-import Button from "./button";
+import IconButton from "./iconButton";
 import BaseComponent from "../BaseComponent";
 import ButtonConfigNotes from "./notes/buttonConfig.md";
 import { loadNotes, getNotes } from "../../../helpers/storybook";
@@ -17,27 +17,25 @@ const Notes = loadNotes(
 /**
  * Renders the button in different prop scenarios
  * @param object An object with props to override
- * @return JSX Button
+ * @return JSX IconButton
 */
 const renderButton = (configOverride = {}) => (
-  <Button
+  <IconButton
     name="saveButton"
     defaultStatus={configOverride.defaultStatus || 0}
     parent={{}}
     config={{
-      type: "neo-button",
-      label: text("Button label", "Save"),
+      icon: "save",
       action: () => ({ actionStatus: 'success' }),
       ...configOverride
     }}
   />
 );
 
-storiesOf('Buttons/GenericButton', module)
+storiesOf('Buttons/IconButton', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFunc => <BaseComponent>{storyFunc()}</BaseComponent>)
+  .addDecorator(storyFunc => <BaseComponent type='icon'>{storyFunc()}</BaseComponent>)
   .add('on successful click action', () => renderButton(), getNotes(Notes.basicButton))
   .add('on failed click action', () => renderButton({ action: () => ({ actionStatus: 'fail' }) }), getNotes(Notes.basicButtonOnFail))
   .add('warning button', () => renderButton({ defaultStatus: 4 }), getNotes(Notes.warningButton))
   .add('danger button', () => renderButton({ defaultStatus: 5 }), getNotes(Notes.dangerButton) )
-  .add('with Icon', () => renderButton({ icon: text("Icon name", "save") }), getNotes(Notes.basicButtonWithIcon));

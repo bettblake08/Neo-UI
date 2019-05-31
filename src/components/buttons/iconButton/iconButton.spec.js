@@ -1,18 +1,18 @@
 import React from 'react';
 import { shallow } from "enzyme";
 import waitForTest from "wait-for-expect";
-import Button from "./button";
+import Button from "./iconButton";
 import TestComponent from "../../../helpers/TestComponent";
 
 jest.useFakeTimers();
 
-describe("Basic Button ", () => {
+describe("Icon Button ", () => {
   const defaultProps = {
     name: "saveButton",
-    defaultStatus: 0,
     parent: TestComponent,
     config: {
-      label: "Save",
+      type: "neo-icon-button",
+      icon: "save",
       action: jest.fn()
     }
   };
@@ -42,32 +42,31 @@ describe("Basic Button ", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("renders with icon as expected", () => {
+  it("renders as expected with JSX as icon", () => {
     const { wrapper } = setup({ config: {
       ...defaultProps.config,
-      icon: "save",
-      type: "neo-button"  
+      icon: <i className={`fas fa-save icon`} />,
+      type: null
     }});
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it("renders with JSX as icon as expected", () => {
-    const { wrapper } = setup({ config: { ...defaultProps.config, icon: <i className="fas fa-save icon" /> } });
     expect(wrapper).toMatchSnapshot();
   });
 
   it("calls the onClick action when clicked", () => {
     const { wrapper, props } = setup();
-    wrapper.find('button').simulate('click');
+    wrapper.find('.neo-icon-button--normal').simulate('click');
     expect(props.config.action).toHaveBeenCalled();
   });
 
-  it("sets the state of the button to loading", () => testButtonStatus({ status: 'loading', statusNo: 3 }));
+  it("sets the state of the button to loading", () =>
+    testButtonStatus({ status: 'loading', statusNo: 3 }));
 
-  it("sets the state of the button to successful", () => testButtonStatus({ status: 'success', statusNo: 2, resetStatusNo: 0 }));
+  it("sets the state of the button to successful", () =>
+    testButtonStatus({ status: 'success', statusNo: 2, resetStatusNo: 0 }));
 
-  it("sets the state of the button to failed", () => testButtonStatus({ status: 'fail', statusNo: 1, resetStatusNo: 0 }));
+  it("sets the state of the button to failed", () =>
+    testButtonStatus({ status: 'fail', statusNo: 1, resetStatusNo: 0 }));
 
   it("sets the state of the button using invalid status", () =>
     testButtonStatus({ status: 'invalid', statusNo: 0, resetStatusNo: 0 }));
+
 });

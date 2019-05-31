@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-import Helpers, {
+import {
   STATUS_STRINGS,
   COMPONENT_STATUS_CLASS,
   defaultReactiveUIProps,
-  defaultReactiveUIDefaultProps
+  defaultReactiveUIDefaultProps,
+  Common
 } from "../../../helpers";
+
+import { getInputStatus } from "./helpers";
 
 
 class TextInput extends Component {
@@ -16,6 +19,7 @@ class TextInput extends Component {
     this.state = {
       status: props.defaultStatus,
       alertText: "",
+      lastTyped: Date.now(),
       inputValue: props.config.inputValue || ""
     }
 
@@ -23,43 +27,38 @@ class TextInput extends Component {
   }
 
   componentDidMount() {
-    Helpers.Common.attachToParentComponent(this);
+    Common.attachToParentComponent(this);
   }
 
   componentDidUpdate() {
-    Helpers.Common.resetInteractiveComponentStatus(this);
+    Common.resetInteractiveComponentStatus(this);
   }
  
 	handleValueChange = e => {
 	  const component = this;
-	  const { config: { length } } = this.props;
+	  const { config: { length = 999, testInput } } = this.props;
 	  this.setState({
 	    lastTyped: Date.now(),
-	    inputValue: e.target.value.substr(0, length || 999)
+	    inputValue: e.target.value.substr(0, length)
 	  });
 
 	  setTimeout(() => {
 	    const { inputValue, lastTyped } = component.state;
-	    const { config: { testInput } } = component.props;
-			
-	    if ((Date.now() - lastTyped) >= 1000) {
-	      let status = 0;
-	      if (typeof testInput === "string") status = Helpers.Regex[testInput].test(inputValue) ? 6 : 5;
-	      else if (testInput instanceof RegExp) status = testInput.test(inputValue) ? 6 : 5;
-	      else if (testInput instanceof Function) status = testInput(inputValue) ? 6 : 5;
+	    const lastChanged = process.env.NODE_ENV === 'test' ? Date.now() - 1001: lastTyped;
 
-	      component.setState({ status });
+	    if ((Date.now() - lastChanged) >= 1000) {
+	      component.setState({ status: getInputStatus(inputValue, testInput) ? 6 : 5 });
 	    }
 	  }, 1000);
 	};
   
 	focus = () => this.textInputRef.current.focus();
 
-	setFloatingLabel = () => {
+	setFloatingLabel = label => {
 	  const { config } = this.props;
 	  if (config.floatingLabel) {
 	    return (
-	      <label htmlFor={config.label.replace(" ", "")}>{config.label}</label>
+	      <label htmlFor={label.replace(" ", "")}>{label}</label>
 	    );
 	  }
 	}
@@ -72,7 +71,9 @@ class TextInput extends Component {
 	  })
 	}
 
-	isValid = () => this.state.status === 5;
+	isValid = () => this.state.status === 6;
+
+	getValue = () => this.state.inputValue;
 
 	render() {
 	  const { inputValue, alertText, status } = this.state;
@@ -92,14 +93,14 @@ class TextInput extends Component {
 	      <input
 	        id={label.replace(" ", "")}
 	        ref={this.textInputRef}
-	        type="text"
+	        type={config.inputType || "text"}
 	        className="neo-font--input"
 	        value={inputValue}
 	        onChange={this.handleValueChange}
 	        placeholder={config.placeholder || ""}
 	      />
 
-	      {this.setFloatingLabel()}
+	      {this.setFloatingLabel(label)}
 
 	      <div className={`${commentClass}${alertText ? "disabled" : "active"}`}>{config.comment}</div>
 	      <div className={`${errorClass}${alertText ? "active" : 'disabled'}`}>{alertText}</div>

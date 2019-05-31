@@ -3,66 +3,51 @@
 @import "../../../abstracts/mixins";
 
 .neo-icon-button {
-    &,
-    &--normal,
-    &--success,
-    &--failed,
-    &--danger,
-    &--warning,
-    &--white,
-    &--disabled,
-    &--selected {
+    width: 100%;
+    height: 100%;
+    float: right;
+    border: none;
+    display: block;
+    position: relative;
+    @include transition-type-1;
+
+    .icon {
         width: 100%;
         height: 100%;
-        color: $color-primary;
-        float: right;
-        border: none;
-        display: block;
-        position: relative;
-        @include transition-type-1;
-        .icon {
-            width: 100%;
-            height: 100%;
-            opacity: 0.6;
-        }
-        &:hover .icon {
-            opacity: 1;
-        }
+        opacity: 0.6;
     }
-    &--selected {
+
+    &:hover .icon {
         opacity: 1;
-    }
-    &--disabled {
-        display: none;
     }
     &--normal {
         .icon {
             fill: $color-primary;
+            color: $color-primary;
         }
     }
     &--success {
         .icon {
             fill: $color-success-primary;
+            color: $color-success-primary;
         }
     }
-    &--failed {
+    &--fail {
         .icon {
             fill: $color-error-secondary;
-        }
-    }
-    &--danger {
-        .icon {
-            fill: $color-error-primary;
+            color: $color-error-secondary;
         }
     }
     &--warning {
         .icon {
-            fill: $color-primary;
+            fill: $color-warning-primary;
+            color: $color-warning-primary;
         }
     }
-    &--white {
+    &--inverted {
         .icon {
             fill: $color-primary-white;
+            color: $color-primary-white;
         }
     }
     &__number {

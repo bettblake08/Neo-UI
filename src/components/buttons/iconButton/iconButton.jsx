@@ -1,70 +1,66 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
+import Helpers, {
+  STATUS_STRINGS,
+  COMPONENT_STATUS_CLASS,
+  defaultReactiveUIProps,
+  defaultReactiveUIDefaultProps
+} from "../../../helpers";
 
 class IconButton extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      status: props.status
+      status: props.defaultStatus || 0
     };
   }
 
   componentDidMount(){
-    var state = this.props.parent.state;
-    state.iconButtons.push(this);
-    this.setState(state);
+    Helpers.Common.attachToParentComponent(this);
   }
 
   componentDidUpdate(){
-    var c = this;
-    var state = c.state;
+    Helpers.Common.resetInteractiveComponentStatus(this);
+  }
 
-    if(state.status == 1 || state.status != 2){
-      setTimeout(()=>{
-        state.status = 0;
-        c.setState(state);
-      },c.props.config.delay);
-    }
+  setStatus = status => {
+    const statusIndex = STATUS_STRINGS.findIndex(string => string === status);
+    this.setState({
+      status:  statusIndex > 0 ? statusIndex : 0
+    });
+  }
+
+  renderIcon = icon => {
+    if (typeof icon === 'string') return (<i className={`fas fa-${icon} icon`} />);
+    return icon;
   }
 
   render() {
-    var status = "";
-    var config = this.props.config;
+    const { config: { type = 'neo-icon-button', icon, action } } = this.props;
+    const { status } = this.state;
+    const statusText = COMPONENT_STATUS_CLASS[status]; 
 
-    switch (this.state.status) {
-    case 0: { status = "normal"; break; }
-    case 1: { status = "failed"; break; }
-    case 2: { status = "success"; break; }
-    case 3: { status = "loading"; break; }
-    case 4: { status = "warning"; break; }
-    case 5: { status = "danger"; break; }
-    case 6: { status = "success"; break; }
-    }
-
-    const classValue = config.class + "--" + status;
-        
     return (
-      <div className={classValue} onClick={config.action}>
-        <svg className="icon">
-          <use xlinkHref={"#" + config.icon} />
-        </svg>
+      <div className={`${type} ${type}--${statusText}`} onClick={action}>
+        {this.renderIcon(icon)}
       </div>
     );
   }
 }
 
 IconButton.propTypes = {
+  ...defaultReactiveUIProps,
   config: PropTypes.shape({
     type: PropTypes.string,
     action: PropTypes.func,
     label: PropTypes.string
-  }).isRequired,
-  status: PropTypes.number,
-  parent: PropTypes.instanceOf(Object).isRequired
+  }).isRequired
 };
 
 IconButton.defaultProps = {
-  status: 0
+  ...defaultReactiveUIDefaultProps
 };
 
 export default IconButton;

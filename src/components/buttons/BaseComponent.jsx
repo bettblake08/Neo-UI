@@ -5,7 +5,12 @@ import "./baseComponent.scss";
 
 export default class BaseComponent extends Component {
 	static propTypes = {
-	  children: PropTypes.instanceOf(Array).isRequired
+	  children: PropTypes.instanceOf(Array).isRequired,
+	  type: PropTypes.string
+	}
+
+	static defaultProps = {
+	  type: "default"
 	}
 
 	constructor(props) {
@@ -41,9 +46,9 @@ export default class BaseComponent extends Component {
 	}
 
 	render() {
-
+	  const { type } = this.props;
 	  return (
-	    <div className="demo-box">
+	    <div className={`demo-box${type === 'default' ? "" : `--${type}` }`}>
 	      {this.getClone()}
 	    </div>
 	  )

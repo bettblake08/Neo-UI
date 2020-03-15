@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text } from '@storybook/addon-knobs';
 
 import IconButton from "./iconButton";
-import BaseComponent from "../BaseComponent";
+import BaseComponent from "../../baseComponent";
 import ButtonConfigNotes from "./notes/buttonConfig.md";
 import { loadNotes, getNotes } from "../../../helpers/storybook";
 
@@ -34,7 +34,7 @@ const renderButton = (configOverride = {}) => (
 
 storiesOf('Buttons/IconButton', module)
   .addDecorator(withKnobs)
-  .addDecorator(storyFunc => <BaseComponent type='icon'>{storyFunc()}</BaseComponent>)
+  .addDecorator(storyFunc => <BaseComponent componentType='button' componentModifier='icon'>{storyFunc()}</BaseComponent>)
   .add('on successful click action', () => renderButton(), getNotes(Notes.basicButton))
   .add('on failed click action', () => renderButton({ action: () => ({ actionStatus: 'fail' }) }), getNotes(Notes.basicButtonOnFail))
   .add('warning button', () => renderButton({ defaultStatus: 4 }), getNotes(Notes.warningButton))

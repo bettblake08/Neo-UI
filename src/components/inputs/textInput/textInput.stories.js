@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 
 import TextInput from "./textInput";
-import BaseComponent from "../BaseComponent";
+import BaseComponent from "../../baseComponent";
 import TextInputConfig from "./notes/config.md"
 import { loadNotes, getNotes } from "../../../helpers/storybook";
 import Regex from "../../../helpers/regex";

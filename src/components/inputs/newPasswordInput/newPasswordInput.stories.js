@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 
 import PasswordInput from "./newPasswordInput";
-import BaseComponent from "../BaseComponent";
+import BaseComponent from "../../baseComponent";
 import TextInputConfig from "./notes/config.md"
 import { loadNotes, getNotes } from "../../../helpers/storybook";
 

@@ -9,8 +9,10 @@ import interactiveUIConfigNotes  from "../notes/interactiveUIConfig.md";
  * @return String An updated note embedded with the global notes
 */
 const addGlobalNotes = (note, globals = []) => {
-  let updatedNote = note;
 
+  if (note === undefined) return "";
+  let updatedNote = note.default;
+  
   [
     ['{{interactiveUIConfig}}', interactiveUIConfigNotes],
     ...globals

@@ -46,6 +46,7 @@
     "@babel/node": "7.0.0",
     "@babel/plugin-proposal-class-properties": "7.0.0",
     "@babel/plugin-transform-react-constant-elements": "7.0.0",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/polyfill": "7.0.0",
     "@babel/preset-env": "7.0.0",
     "@babel/preset-react": "7.0.0",
@@ -109,7 +110,12 @@
     "env": {
       "development": {
         "presets": [
-          "@babel/preset-env",
+          [
+            "@babel/preset-env",
+            {
+              "useBuiltIns": "entry"
+            }
+          ],
           "@babel/preset-react"
         ],
         "plugins": [
@@ -159,5 +165,8 @@
       "<rootDir>/node_modules/",
       "<rootDir>/tools/"
     ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.7"
   }
 }

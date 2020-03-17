@@ -65,3 +65,5 @@ coveralls.yml
 .DS_Store
 
 /src/**/*.css
+
+docs/

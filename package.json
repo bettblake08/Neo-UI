@@ -1,6 +1,6 @@
 {
   "name": "@bettbrian08/neo-ui-react",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "This packages is a collection of React UI input components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -46,18 +46,19 @@
     "@babel/node": "7.0.0",
     "@babel/plugin-proposal-class-properties": "7.0.0",
     "@babel/plugin-transform-react-constant-elements": "7.0.0",
+    "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/polyfill": "7.0.0",
     "@babel/preset-env": "7.0.0",
     "@babel/preset-react": "7.0.0",
     "@emotion/core": "^10.0.10",
     "@fortawesome/fontawesome-free": "^5.8.2",
-    "@storybook/addon-actions": "^5.0.11",
-    "@storybook/addon-knobs": "^5.0.11",
-    "@storybook/addon-links": "^5.0.11",
-    "@storybook/addon-notes": "^5.0.11",
-    "@storybook/addon-storysource": "^5.0.11",
-    "@storybook/addons": "^5.0.11",
-    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.3.17",
+    "@storybook/addon-knobs": "^5.3.17",
+    "@storybook/addon-links": "^5.3.17",
+    "@storybook/addon-notes": "^5.3.17",
+    "@storybook/addon-storysource": "^5.3.17",
+    "@storybook/addons": "^5.3.17",
+    "@storybook/react": "^5.3.17",
     "autoprefixer": "9.1.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
@@ -109,7 +110,12 @@
     "env": {
       "development": {
         "presets": [
-          "@babel/preset-env",
+          [
+            "@babel/preset-env",
+            {
+              "useBuiltIns": "entry"
+            }
+          ],
           "@babel/preset-react"
         ],
         "plugins": [
@@ -159,5 +165,8 @@
       "<rootDir>/node_modules/",
       "<rootDir>/tools/"
     ]
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.7"
   }
 }

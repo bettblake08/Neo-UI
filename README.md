@@ -3,6 +3,8 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/c0eabe343848efaf00c3/maintainability)](https://codeclimate.com/github/bettblake08/Neo-UI/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c0eabe343848efaf00c3/test_coverage)](https://codeclimate.com/github/bettblake08/Neo-UI/test_coverage)
 [![Known Vulnerabilities](https://snyk.io/test/github/bettblake08/Neo-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/bettblake08/Neo-UI?targetFile=package.json)
+![Publishing Status](https://github.com/bettblake08/Neo-UI/workflows/Neo-UI%20package/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/80c0b094-b4da-44ed-bf43-cf905e95fbf0/deploy-status)](https://app.netlify.com/sites/neo-ui-react/deploys)
 [![Storybook](https://cdn.jsdelivr.net/gh/storybooks/brand@master/badge/badge-storybook.svg)][2]
 
 ## Description
@@ -96,7 +98,7 @@ This project is licensed under the MIT License - see the [LICENSE.md][9] file fo
 Created by [@bettblake08][1].
 
 [1]: https://github.com/bettblake08
-[2]: https://bettblake08.github.io/Neo-UI
+[2]: https://neo-ui-react.netlify.com
 [3]: https://reactjs.org/
 [4]: https://storybook.js.org/
 [5]: http://semver.org/

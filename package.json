@@ -1,6 +1,6 @@
 {
   "name": "@bettbrian08/neo-ui-react",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "This packages is a collection of React UI input components",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -167,6 +167,7 @@
     ]
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.7"
+    "@babel/runtime": "^7.8.7",
+    "@storybook/preset-create-react-app": "^2.1.0"
   }
 }

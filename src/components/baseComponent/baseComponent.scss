@@ -19,7 +19,7 @@
         left: 50%;
     }
 
-    &__input {
+    &__content {
         transform: translate(-50%, -50%);
         position: absolute;
         z-index: 100;
@@ -27,11 +27,12 @@
         left: 50%;
         padding: 5rem;
         width: 40%;
-        background-color: white;
+        border-radius: 1rem;
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
         box-shadow: $box-shadow-light;
     }
 
-     &--icon &__input {
+     &--icon &__content {
         width: auto;
         font-size: 2.5rem;
     }

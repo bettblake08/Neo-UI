@@ -78,7 +78,7 @@ export default class BaseComponent extends Component {
         }`}
       >
         <div className="demo-box__background" ref={this.backgroundRef}></div>
-        <div className="demo-box__input">{this.getClone()}</div>
+        <div className="demo-box__content">{this.getClone()}</div>
       </div>
     );
   }

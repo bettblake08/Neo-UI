@@ -7,7 +7,7 @@ jobs:
   build:
     # Run tests inside a docker container set up on CircleCI
     docker:
-      - image: circleci/node:11.6.0
+      - image: circleci/node:13
 
     # Steps to run tests
     steps:
